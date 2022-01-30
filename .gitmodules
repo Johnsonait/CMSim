@@ -1,0 +1,3 @@
+[submodule "CMSim/vendor/spdlog"]
+	path = CMSim/vendor/spdlog
+	url = https://github.com/gabime/spdlog
