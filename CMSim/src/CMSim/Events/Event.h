@@ -3,6 +3,7 @@
 #include "../Core.h"
 
 #include <string>
+#include <sstream>
 #include <functional>
 
 namespace CMSim {
@@ -10,8 +11,8 @@ namespace CMSim {
 	{
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved, 
-		Apptick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased, 
+		AppTick, AppUpdate, AppRender,
+		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
@@ -30,7 +31,7 @@ namespace CMSim {
 
 	#define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-	class CMSIM_API Event 
+	class Event 
 	{
 		friend class EventDisptcher;
 	public:
@@ -55,7 +56,7 @@ namespace CMSim {
 		EventDispatcher(Event& event) : m_Event(event)
 		{
 		}
-		template<typename T, typename F>
+		template<typename T, typename F> 
 		bool Dispatch(const F& func)
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
