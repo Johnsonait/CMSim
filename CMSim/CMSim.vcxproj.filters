@@ -4,6 +4,9 @@
     <Filter Include="CMSim">
       <UniqueIdentifier>{1E12E70C-8A26-0FBE-53A8-B21DBF7B0BEF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CMSim\Events">
+      <UniqueIdentifier>{42702BBF-2ED3-BA63-D758-F319C39A86E6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CMSim.h" />
@@ -16,15 +19,27 @@
     <ClInclude Include="src\CMSim\EntryPoint.h">
       <Filter>CMSim</Filter>
     </ClInclude>
+    <ClInclude Include="src\CMSim\Events\ApplicationEvent.h">
+      <Filter>CMSim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CMSim\Events\Event.h">
+      <Filter>CMSim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CMSim\Events\KeyEvent.h">
+      <Filter>CMSim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CMSim\Events\MouseEvent.h">
+      <Filter>CMSim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CMSim\KeyCodes.h">
+      <Filter>CMSim</Filter>
+    </ClInclude>
     <ClInclude Include="src\CMSim\Log.h">
       <Filter>CMSim</Filter>
     </ClInclude>
-    <ClInclude Include="src\CMSim\Events\Event.h" />
-    <ClInclude Include="src\CMSim\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\CMSim\Events\KeyEvent.h" />
-    <ClInclude Include="src\CMSim\KeyCodes.h" />
-    <ClInclude Include="src\CMSim\Events\MouseEvent.h" />
-    <ClInclude Include="src\CMSim\MouseCodes.h" />
+    <ClInclude Include="src\CMSim\MouseCodes.h">
+      <Filter>CMSim</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CMSim\Application.cpp">

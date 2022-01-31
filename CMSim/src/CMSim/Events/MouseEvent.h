@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Event.h"
-#include "../MouseCodes.h"
+#include "CMSim/MouseCodes.h"
 
 namespace CMSim {
 

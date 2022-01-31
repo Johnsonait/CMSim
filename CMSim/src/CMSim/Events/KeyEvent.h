@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Event.h"
-#include "../KeyCodes.h"
+#include "CMSim/KeyCodes.h"
 
 namespace  CMSim {
 	class KeyEvent : public Event

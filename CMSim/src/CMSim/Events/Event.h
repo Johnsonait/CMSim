@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Core.h"
+#include "CMSim/Core.h"
 
 #include <string>
 #include <sstream>
