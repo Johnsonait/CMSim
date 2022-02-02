@@ -55,23 +55,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\bin\Debug-windows-x86_64\CMSim\</OutDir>
-    <IntDir>..\bin-int\Debug-windows-x86_64\CMSim\</IntDir>
-    <TargetName>CMSim</TargetName>
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin\Release-windows-x86_64\CMSim\</OutDir>
-    <IntDir>..\bin-int\Release-windows-x86_64\CMSim\</IntDir>
-    <TargetName>CMSim</TargetName>
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin\Dist-windows-x86_64\CMSim\</OutDir>
-    <IntDir>..\bin-int\Dist-windows-x86_64\CMSim\</IntDir>
-    <TargetName>CMSim</TargetName>
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>CMS_PLATFORM_WINDOWS;CMS_BUILD_DLL;CMS_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;$(SolutionDir)\CMSim\vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -88,10 +88,12 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImportLibrary>..\bin\Debug-windows-x86_64\CMSim\CMSim.lib</ImportLibrary>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>..\bin\Debug-x64\CMSim\CMSim.lib</ImportLibrary>
+      <AdditionalLibraryDirectories>$(SolutionDir)\CMSim\vendor\GLFW\lib-vc2019</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\CMSim\CMSim.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\CMSim\CMSim.dll "..\bin\Debug-windows-x86_64\FreeTest\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\CMSim\CMSim.dll "..\bin\Debug-windows-x86_64\FreeTest\" &gt; nul)</Command>
+      <Command>COPY $(SolutionDir)\bin\$(Configuration)-$(Platform)\CMSim\CMSim.dll $(SolutionDir)\bin\$(Configuration)-$(Platform)\FreeTest\CMSim.dll</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -99,7 +101,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>CMS_PLATFORM_WINDOWS;CMS_BUILD_DLL;CMS_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;$(SolutionDir)\CMSim\vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -112,7 +114,9 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Release-windows-x86_64\CMSim\CMSim.lib</ImportLibrary>
+      <AdditionalLibraryDirectories>$(SolutionDir)\CMSim\vendor\GLFW\lib-vc2019</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>IF EXIST ..\bin\Release-windows-x86_64\CMSim\CMSim.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\CMSim\CMSim.dll "..\bin\Release-windows-x86_64\FreeTest\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\CMSim\CMSim.dll "..\bin\Release-windows-x86_64\FreeTest\" &gt; nul)</Command>
@@ -123,7 +127,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>CMS_PLATFORM_WINDOWS;CMS_BUILD_DLL;CMS_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;$(SolutionDir)\CMSim\vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -136,7 +140,9 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Dist-windows-x86_64\CMSim\CMSim.lib</ImportLibrary>
+      <AdditionalLibraryDirectories>$(SolutionDir)\CMSim\vendor\GLFW\lib-vc2019</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>IF EXIST ..\bin\Dist-windows-x86_64\CMSim\CMSim.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\CMSim\CMSim.dll "..\bin\Dist-windows-x86_64\FreeTest\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\CMSim\CMSim.dll "..\bin\Dist-windows-x86_64\FreeTest\" &gt; nul)</Command>
@@ -154,10 +160,15 @@
     <ClInclude Include="src\CMSim\KeyCodes.h" />
     <ClInclude Include="src\CMSim\Log.h" />
     <ClInclude Include="src\CMSim\MouseCodes.h" />
+    <ClInclude Include="src\CMSim\Window.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\cmspch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CMSim\Application.cpp" />
     <ClCompile Include="src\CMSim\Log.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\cmspch.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

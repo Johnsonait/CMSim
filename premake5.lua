@@ -11,6 +11,11 @@ workspace "CMSim"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "CMSim/vendor/GLFW/include/GLFW"
+
+include "CMSim/vendor/GLFW"
+
 project "CMSim"
 	location "CMSim"
 	kind "SharedLib"
@@ -28,7 +33,14 @@ project "CMSim"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -41,7 +53,6 @@ project "CMSim"
 			"CMS_PLATFORM_WINDOWS",
 			"CMS_BUILD_DLL"
 		}
-
 		postbuildcommands
 		{
 			--("{COPY}%{cfg.buildtarget.relpath}../bin/"  ..outputdir..  "/FreeTest")

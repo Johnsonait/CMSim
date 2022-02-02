@@ -33,7 +33,7 @@ namespace CMSim {
 
 	class Event 
 	{
-		friend class EventDisptcher;
+		friend class EventDispatcher;
 	public:
 		virtual ~Event() = default;
 
@@ -61,10 +61,10 @@ namespace CMSim {
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.Handled |= func(static_cast<T&>(m_Event));
+				m_Event.m_Handled |= func(static_cast<T&>(m_Event));
 				return true;
 			}
-			return false
+			return false;
 		}
 	private:
 		Event& m_Event;

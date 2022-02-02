@@ -1,6 +1,6 @@
 #include <CMSim.h>
 
-class FreeTest : public CMSim::Application
+class  FreeTest : public CMSim::Application
 {
 public:
 	FreeTest()
