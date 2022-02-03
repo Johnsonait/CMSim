@@ -3,6 +3,7 @@
 #ifdef CMS_PLATFORM_WINDOWS
 #include "Core.h"
 
+
 extern CMSim::Application* CMSim::CreateApplication();
 
 int main(int argc, char** arcv)

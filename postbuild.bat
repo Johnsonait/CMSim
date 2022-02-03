@@ -1,0 +1,1 @@
+xcopy /s "D:\dev\CMSim\bin\Debug-x64\CMSim\CMSim.dll" "D:\dev\CMSim\bin\Debug-x64\FreeTest\CMSim.dll"

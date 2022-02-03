@@ -12,9 +12,11 @@ workspace "CMSim"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
-IncludeDir["GLFW"] = "CMSim/vendor/GLFW/include/GLFW"
+IncludeDir["GLFW"] = "CMSim/vendor/GLFW/include/"
+IncludeDir["GLAD"] = "CMSim/vendor/GLAD/include/"
 
 include "CMSim/vendor/GLFW"
+include "CMSim/vendor/GLAD"
 
 project "CMSim"
 	location "CMSim"
@@ -34,12 +36,15 @@ project "CMSim"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.GLAD}"
+
 	}
 
 	links
 	{
 		"GLFW",
+		"GLAD",
 		"opengl32.lib"
 	}
 

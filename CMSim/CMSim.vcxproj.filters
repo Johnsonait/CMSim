@@ -49,10 +49,14 @@
     <ClInclude Include="src\CMSim\Window.h">
       <Filter>CMSim</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+    <ClInclude Include="src\CMSim\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\cmspch.h" />
+    <ClInclude Include="src\CMSim\Layer.h" />
+    <ClInclude Include="src\CMSim\LayerStack.h" />
+    <ClInclude Include="src\CMSim\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\CMSim\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CMSim\Application.cpp">
@@ -61,9 +65,20 @@
     <ClCompile Include="src\CMSim\Log.cpp">
       <Filter>CMSim</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+    <ClCompile Include="src\CMSim\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\cmspch.cpp" />
+    <ClCompile Include="src\CMSim\Layer.cpp" />
+    <ClCompile Include="src\CMSim\LayerStack.cpp" />
+    <ClCompile Include="src\CMSim\glad.c" />
+    <ClCompile Include="vendor\imgui\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_draw.cpp" />
+    <ClCompile Include="vendor\imgui\imgui.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_tables.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\CMSim\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\CMSim\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
   </ItemGroup>
 </Project>

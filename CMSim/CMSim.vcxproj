@@ -79,10 +79,10 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>CMS_PLATFORM_WINDOWS;CMS_BUILD_DLL;CMS_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;$(SolutionDir)\CMSim\vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\CMSim\vendor\imgui\backends;$(SolutionDir)\CMSim\vendor\imgui;$(SolutionDir)\CMSim\vendor\GLAD\include;src;vendor\spdlog\include;$(SolutionDir)\CMSim\vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -90,10 +90,11 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Debug-x64\CMSim\CMSim.lib</ImportLibrary>
-      <AdditionalLibraryDirectories>$(SolutionDir)\CMSim\vendor\GLFW\lib-vc2019</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\CMSim\vendor\GLFW\lib-vc2019;$(SolutionDir)\CMSim\vendor\GLAD;$(SolutionDir)\CMSim\vendor\imgui</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>COPY $(SolutionDir)\bin\$(Configuration)-$(Platform)\CMSim\CMSim.dll $(SolutionDir)\bin\$(Configuration)-$(Platform)\FreeTest\CMSim.dll</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -157,18 +158,33 @@
     <ClInclude Include="src\CMSim\Events\Event.h" />
     <ClInclude Include="src\CMSim\Events\KeyEvent.h" />
     <ClInclude Include="src\CMSim\Events\MouseEvent.h" />
+    <ClInclude Include="src\CMSim\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\CMSim\KeyCodes.h" />
+    <ClInclude Include="src\CMSim\Layer.h" />
+    <ClInclude Include="src\CMSim\LayerStack.h" />
     <ClInclude Include="src\CMSim\Log.h" />
     <ClInclude Include="src\CMSim\MouseCodes.h" />
+    <ClInclude Include="src\CMSim\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\CMSim\Window.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\CMSim\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\cmspch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CMSim\Application.cpp" />
+    <ClCompile Include="src\CMSim\glad.c" />
+    <ClCompile Include="src\CMSim\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\CMSim\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_demo.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_tables.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\CMSim\Layer.cpp" />
+    <ClCompile Include="src\CMSim\LayerStack.cpp" />
     <ClCompile Include="src\CMSim\Log.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\CMSim\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\cmspch.cpp" />
+    <ClCompile Include="vendor\imgui\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="vendor\imgui\imgui.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_draw.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

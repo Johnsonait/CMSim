@@ -13,7 +13,6 @@ CMSim::Application* CMSim::CreateApplication()
 	return app;
 }
 
-
 namespace CMSim {
 	static bool s_GLFWInitialized = false;
 
@@ -54,6 +53,10 @@ namespace CMSim {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		CMS_CORE_WARN("GLAD status: {0}",status);
+		CMS_CORE_ASSERT(status, "Failed to initialize GLAD!");
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
