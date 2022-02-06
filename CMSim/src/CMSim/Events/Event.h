@@ -1,10 +1,7 @@
 #pragma once
 
 #include "CMSim/Core.h"
-
-#include <string>
-#include <sstream>
-#include <functional>
+#include "cmspch.h"
 
 namespace CMSim {
 	enum class EventType
@@ -25,11 +22,11 @@ namespace CMSim {
 		EventCategoryMouse       = BIT(3),
 		EventCategoryMouseButton = BIT(4)
 	};
-	#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; }\
+#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; }\
 								virtual EventType GetEventType() const override { return GetStaticType(); }\
 								virtual const char* GetName() const override { return #type; }
 
-	#define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
+#define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
 	class Event 
 	{
@@ -53,6 +50,7 @@ namespace CMSim {
 	class EventDispatcher
 	{
 	public:
+		
 		EventDispatcher(Event& event) : m_Event(event)
 		{
 		}
@@ -66,8 +64,10 @@ namespace CMSim {
 			}
 			return false;
 		}
+		
 	private:
 		Event& m_Event;
+		
 	};
 
 	inline std::ostream& operator<<(std::ostream& os, const Event& e)

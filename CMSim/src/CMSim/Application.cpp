@@ -4,6 +4,7 @@
 
 #include <glad/glad.h>
 
+#include "CMSim/Input.h"
 
 namespace CMSim {
 
@@ -62,6 +63,8 @@ namespace CMSim {
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
+			auto[x, y] = Input::GetMousePosition();
+			CMS_CORE_TRACE("{0}, {1}", x, y);
 			m_Window->OnUpdate();
 		}
 	}

@@ -159,12 +159,14 @@
     <ClInclude Include="src\CMSim\Events\KeyEvent.h" />
     <ClInclude Include="src\CMSim\Events\MouseEvent.h" />
     <ClInclude Include="src\CMSim\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\CMSim\Input.h" />
     <ClInclude Include="src\CMSim\KeyCodes.h" />
     <ClInclude Include="src\CMSim\Layer.h" />
     <ClInclude Include="src\CMSim\LayerStack.h" />
     <ClInclude Include="src\CMSim\Log.h" />
     <ClInclude Include="src\CMSim\MouseCodes.h" />
     <ClInclude Include="src\CMSim\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\CMSim\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\CMSim\Window.h" />
     <ClInclude Include="src\CMSim\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\cmspch.h" />
@@ -174,6 +176,7 @@
     <ClCompile Include="src\CMSim\glad.c" />
     <ClCompile Include="src\CMSim\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\CMSim\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\CMSim\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="vendor\imgui\imgui_demo.cpp" />
     <ClCompile Include="vendor\imgui\imgui_tables.cpp" />
     <ClCompile Include="vendor\imgui\imgui_widgets.cpp" />

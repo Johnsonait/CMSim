@@ -23,8 +23,12 @@ namespace CMSim {
 		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
-		virtual void Init(const WindowProps& props);
+
+		inline virtual void* GetNativeWindow() const { return m_Window; }
+
+		//virtual void Init(const WindowProps& props);
 	private:
+		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;

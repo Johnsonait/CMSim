@@ -1,26 +1,30 @@
 #pragma once
 
 #include "Event.h"
-#include "CMSim/KeyCodes.h"
+//#include "CMSim/KeyCodes.h"
 
 namespace  CMSim {
-	class KeyEvent : public Event
+	class CMSIM_API KeyEvent : public Event
 	{
 	public: 
-		KeyCode GetKeyCode() const { return m_KeyCode; }
+		inline int GetKeyCode() const { return m_KeyCode; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
-	protected:
-		KeyEvent(const KeyCode keycode) : m_KeyCode(keycode) {}
 
-		KeyCode m_KeyCode;
+	protected:
+		KeyEvent(int keycode) : m_KeyCode(keycode) {}
+
+		int m_KeyCode;
 	};
 
-	class KeyPressedEvent : public KeyEvent
+	class CMSIM_API KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(const KeyCode keycode, const uint16_t repeatCount)
+		KeyPressedEvent(int keycode, const uint16_t repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
+
+		inline int GetRepeatCount() const { return m_RepeatCount; }
+
 		std::string ToString() const override
 		{
 			std::stringstream ss;
@@ -32,10 +36,10 @@ namespace  CMSim {
 		uint16_t m_RepeatCount;
 	};
 
-	class KeyReleasedEvent : public KeyEvent
+	class CMSIM_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(const KeyCode keycode) : KeyEvent(keycode) {}
+		KeyReleasedEvent(int keycode) : KeyEvent(keycode) {}
 		
 		std::string ToString() const override
 		{
@@ -46,10 +50,10 @@ namespace  CMSim {
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class KeyTypedEvent : public KeyEvent
+	class CMSIM_API KeyTypedEvent : public KeyEvent
 	{
 	public:
-		KeyTypedEvent(const KeyCode keycode) : KeyEvent(keycode) {}
+		KeyTypedEvent(int keycode) : KeyEvent(keycode) {}
 		std::string ToString() const override
 		{
 			std::stringstream ss;
